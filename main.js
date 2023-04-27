@@ -227,7 +227,7 @@ const createWindow = () => {
     isDarkMode ? 'dark' : 'light'
   }schemeovr=1&FORM=SHORUN&udscs=1&udsnav=1&setlang=${locale}&features=udssydinternal&clientscopes=windowheader,coauthor,chat,&udsframed=1`
   const userAgent =
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.0.0'
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48'
   mainWindow.loadURL(bingUrl)
   // Open links in default browser
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
@@ -273,6 +273,7 @@ const createWindow = () => {
     (details, callback) => {
       details.requestHeaders['User-Agent'] = userAgent
       details.requestHeaders['X-Forwarded-For'] = '1.1.1.1'
+      details.requestHeaders['upgrade-insecure-requests']='1'
       callback({ requestHeaders: details.requestHeaders, cancel: false })
     }
   )
